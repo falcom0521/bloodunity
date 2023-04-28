@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://sdk.verbwire.com/v1/verbwire.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='Register.css'>
+    <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<title>Start Saving Lives </title>
+<div class="preloader">
+    <img src="pre-loader.svg" alt="spinner">
+</div>
+<body>
+<header>
+    <nav>
+    <div class="header-logo"><img src=".bb_logo(black).png"></div>
+    <div class="header-list">
+        <ul>
+            <li><a href="help.html">Get Help</li></a>
+            <li><a href="donate.html">Donate</li></a>
+            <li><a href="index.html#vol-sect">Volunteer</li></a>
+            <li><a href="index.html#about-us">About Us</a></li>
+            </ul>
+    </div>
+    </nav>
+</header>
+
+<div class="inner">
+    <div class="photo">
+        <img src="./regphoto.png">
+    </div>
+    <div class="user-form">
+        <h1>Start Saving Lives</h1>
+        <form id="myForm">
+           <i class="fas fa-user icon"></i>
+            <input type="text" placeholder="Name" required pattern="[A-Za-z ]+">
+            <br>
+            <i class="bloodgroup"></i>
+            <!-- <label for="blood-group">Blood Group:</label> -->
+        <select id="blood-group" name="blood-group" required>
+            <option value="" hidden>Select Blood Group</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+            <i class="fas fa-user icon"></i>
+            <select id="dropdown" name="dropdown" required>
+                <option value="" hidden>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+             </select>
+             
+           <br>
+            <i class="fas fa-globe"></i>
+            <input type="text" placeholder="Location" required>
+            <br>
+
+            
+            <i class="fa-bars"></i>
+            <input type="tel" placeholder="Phone Number" required pattern="[0-9]{10}">
+            <br>
+            
+            <i class="fas fa-envelope-square"></i>
+            <input type="email" placeholder="E-mail" required>
+            <br>
+
+           
+
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" id="password_data" required>
+            <div class="safety" style="font-family: sans-serif; font-size: 20px;">
+                Enter Password
+            </div>
+            <div class="action-btn">
+                <button class="btn primary" onclick="submitForm()">Create Account</button>
+                <button class="btn">Skip</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="./Register.js"></script>
+<script>
+    const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    'X-API-Key': 'sk_live_765d0958-bfef-44a2-9a5e-60b7ef62cfe1'
+  }
+};
+
+fetch('https://api.verbwire.com/v1/nft/data/isWalletHolderOfToken?chain=ethereum', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+  .catch(err => console.error(err));
+</script>
+
+<script>
+    const preloader = document.querySelector('.preloader');
+    const fadeEffect = setInterval(() => {
+        if (!preloader.style.opacity) {
+            preloader.style.opacity = 1;
+        }
+        if (preloader.style.opacity > 0) {
+            preloader.style.opacity -= 1.5;
+        } else {
+            clearInterval(fadeEffect);
+        }
+    }, 1500);
+    window.addEventListener('load', fadeEffect);
+</script>
+<!--js for scroll to top-->
+<script src="up.js"></script>
+
+<!--JAVASCRIPT FOR TOGGLE MENU -->
+<script>
+    var headerl = document.getElementById("headerl");
+
+    function showMenu() {
+        headerl.style.right = "0";
+    }
+
+    function hideMenu() {
+        headerl.style.right = "-210px";
+    }
+</script>
+<script>
+    function validatePhoneNumber(event) {
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput.value.length !== 10) {
+        event.preventDefault(); // prevent form submission
+        alert('Please enter a 10-digit phone number.');
+      }
+    }
+    </script>
+
+</body>
+</html>
